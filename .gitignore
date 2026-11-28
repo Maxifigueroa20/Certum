@@ -1,0 +1,14 @@
+temp/
+node_modules/
+target/
+frontend/dist/
+.DS_Store
+
+# AI / Agent tooling
+.agents/
+.gemini/
+.impeccable/
+DESIGN.md
+PRODUCT.md
+skills-lock.json
+
