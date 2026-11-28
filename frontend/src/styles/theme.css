@@ -1,0 +1,466 @@
+:root {
+  color-scheme: light dark;
+  --font-sans: "Onest Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --royal: #1b3b8b;
+  --royal-hover: #142c6b;
+  --amber: #f5b731;
+  --amber-hover: #e2a41e;
+  --ink: #10141d;
+  --paper: #ffffff;
+
+  --canvas: light-dark(#ffffff, #10141d);
+  --surface: light-dark(#f3f5f9, #181e2a);
+  --line: light-dark(#e2e7f0, #2a3346);
+  --control-border: light-dark(#7c8698, #647084);
+  --text: light-dark(#10141d, #f8fafc);
+  --text-muted: light-dark(#525d70, #9da8bc);
+  --royal-text: light-dark(#1b3b8b, #8ab4ff);
+  --success: light-dark(#15803d, #4ade80);
+  --danger: light-dark(#c62828, #ff6b6b);
+  --warning: light-dark(#b45309, #fbbf24);
+
+  --bs-body-bg: var(--canvas);
+  --bs-body-color: var(--text);
+  --bs-secondary-bg: var(--surface);
+  --bs-tertiary-bg: var(--surface);
+  --bs-border-color: var(--line);
+  --bs-primary: var(--royal);
+  --bs-secondary-color: var(--text-muted);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html {
+  background-color: var(--canvas);
+  color: var(--text);
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .certum-display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 4.8vw, 3.85rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h2 {
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+}
+
+.text-secondary {
+  color: var(--text-muted) !important;
+}
+
+.certum-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+a[href],
+button:not(:disabled),
+summary,
+select,
+input[type="checkbox"]:not(:disabled),
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 3px solid var(--royal-text);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+:is(.certum-band, .certum-band-ink, .certum-box-royal, .certum-box-ink) :focus-visible {
+  outline-color: var(--amber);
+}
+
+.hl {
+  display: inline-block;
+  line-height: 1.04;
+  padding: 0.04em 0.24em 0.1em;
+  border-radius: 0.24em;
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+/* Header & Navigation */
+.certum-navbar {
+  background-color: var(--canvas);
+  border-bottom: 1px solid var(--line);
+}
+
+.certum-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: var(--royal);
+  color: var(--paper);
+  font-weight: 800;
+  border-radius: 10px;
+}
+
+.certum-nav-link {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.certum-nav-link:hover {
+  color: var(--text);
+}
+
+.certum-nav-link.is-active {
+  color: var(--royal-text);
+  box-shadow: inset 0 -3px 0 currentColor;
+}
+
+.certum-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background-color: var(--canvas);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.certum-icon-btn:hover {
+  background-color: var(--surface);
+}
+
+/* Buttons & Chips */
+.certum-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.certum-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.certum-btn:disabled {
+  opacity: 0.45;
+}
+
+.certum-btn-primary {
+  background-color: var(--royal);
+  color: var(--paper);
+}
+
+.certum-btn-primary:hover:not(:disabled) {
+  background-color: var(--royal-hover);
+  color: var(--paper);
+}
+
+.certum-btn-amber {
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+.certum-btn-amber:hover:not(:disabled) {
+  background-color: var(--amber-hover);
+  color: var(--ink);
+}
+
+.certum-btn-ghost {
+  background-color: transparent;
+  border-color: var(--control-border);
+  color: var(--text);
+}
+
+.certum-btn-ghost:hover:not(:disabled) {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.certum-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.certum-chip-amber {
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+.certum-chip-royal {
+  background-color: var(--royal);
+  color: var(--paper);
+}
+
+.certum-chip-soft {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+/* Multi-Surface Boxes & Bands */
+.certum-box {
+  background-color: var(--surface);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.certum-box-line {
+  background-color: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.certum-box-ink {
+  background-color: var(--ink);
+  color: var(--paper);
+  border: 1px solid light-dark(transparent, var(--line));
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.certum-box-royal {
+  background-color: var(--royal);
+  color: var(--paper);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.certum-ink-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.certum-ink-muted {
+  color: #a1a9ba;
+}
+
+.certum-royal-muted {
+  color: #dbe4ff;
+}
+
+.certum-band {
+  background-color: var(--royal);
+  color: var(--paper);
+}
+
+.certum-band-ink {
+  background-color: var(--ink);
+  color: var(--paper);
+  border-top: 1px solid light-dark(transparent, var(--line));
+}
+
+.certum-band-rule {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.certum-step-visual {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 76px;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.certum-step-icon {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--amber);
+}
+
+.certum-step-num {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 3.2vw, 2.9rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.42);
+  user-select: none;
+}
+
+/* Reactive Solana Devnet Sonar Pill */
+.certum-network-btn {
+  appearance: none;
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.certum-network-btn:hover {
+  border-color: var(--control-border);
+}
+
+.certum-sonar {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1.5px solid #22c55e;
+  flex-shrink: 0;
+}
+
+.certum-sonar::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 999px;
+  background-color: #22c55e;
+  transform: scale(0.15);
+  opacity: 0.25;
+  animation: certum-sonar-fill 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.certum-sonar.is-offline {
+  border-color: var(--danger);
+}
+
+.certum-sonar.is-offline::after {
+  background-color: var(--danger);
+  animation: none;
+  transform: scale(0.65);
+  opacity: 0.85;
+}
+
+@keyframes certum-sonar-fill {
+  0% {
+    transform: scale(0.12);
+    opacity: 0.18;
+  }
+  58% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  82% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(0.12);
+    opacity: 0.18;
+  }
+}
+
+/* Inputs */
+.certum-input {
+  min-height: 50px;
+  border-radius: 12px;
+  border: 2px solid var(--control-border);
+  background-color: var(--canvas);
+  color: var(--text);
+  padding: 0.625rem 0.9rem;
+  font-weight: 500;
+}
+
+.certum-input:focus {
+  background-color: var(--canvas);
+  color: var(--text);
+  border-color: var(--royal-text);
+  box-shadow: none;
+}
+
+.certum-input:disabled {
+  background-color: var(--surface);
+  color: var(--text-muted);
+  border-color: var(--line);
+  opacity: 0.72;
+}
+
+.certum-pda-box {
+  background-color: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.875rem 1rem;
+}
+
+/* Unified Sonner Toasts */
+.certum-toast {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  --bs-table-border-color: var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
